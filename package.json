@@ -1,0 +1,19 @@
+{
+  "name": "accounting-data-extractor",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.6.0"
+  },
+  "scripts": {
+    "test": "node --experimental-strip-types --test test/*.test.ts",
+    "typecheck": "tsc --noEmit",
+    "build:exe": "npm run typecheck && esbuild src/index.ts --bundle --platform=node --format=cjs --target=node22 --outfile=.build/bundle.cjs && pkg .build/bundle.cjs --targets node22-win-x64 --output dist/accounting_data_extractor.exe --sea"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "@yao-pkg/pkg": "^6.25.0",
+    "esbuild": "^0.28.2",
+    "typescript": "^5.9.3"
+  }
+}
